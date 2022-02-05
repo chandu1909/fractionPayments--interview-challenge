@@ -1,0 +1,33 @@
+Issues and improvisations
+
+-> PAN must be stored in encrypted format but stored in clear
+
+
+-> Internal cache concept will fail when multiple instances available as the hashmap can't be shared among
+instances and duplicate transactions can happen
+
+Sol: use REDIS and share among pods
+
+-> calculating balance is querying entire transaction set when its 0 which is not necessary.
+
+When Database permits :
+
+Sol: Add a columns transaction date, transaction time to transaction table
+     Add a column monthly balance and monthly billing date  to account table
+     only traverse through the transaction from the day after last months billing date
+
+-> App health is not being calculated
+
+Sol: Need to write health logic and make application healthy and unhealthy accordingly
+
+-> Custom Exceptions are not created
+Sol :  need to create custom Exceptions
+       create more dynamic response builder
+
+-> Does not accept integer values in place of double
+
+Sol: Well, we don't necessarily solve this as frontend will have control over what's being sent to backend
+
+-> DAO factory pattern hasn't been used
+
+Sol: Need to implement DAO for all database related operations
